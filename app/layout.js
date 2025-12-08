@@ -1,16 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata = {
@@ -22,10 +16,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`h-full min-h-screen bg-linear-to-br from-primary to-secondary bg-no-repeat ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-h-screen antialiased ${inter.variable} font-sans`}
       >
-        <Navbar />
-        {children}
+        {/* Animated mesh gradient background */}
+        <div className="mesh-gradient" />
+        
+        {/* Main content */}
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
